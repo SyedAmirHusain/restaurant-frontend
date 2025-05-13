@@ -25,7 +25,7 @@ This is a Restaurant Theme Website Template, designed using html and css. It was
 
 
 ## Pages on this Complete Free Template
-1. **index.html** - Home Page (Search Food, Some Categories, Featured Foods, Social Media link)
+1. **home.html** - Home Page (Search Food, Some Categories, Featured Foods, Social Media link)
 2. **categories.html** - List all Categories on Single Page
 3. **foods.html** - List all foods on a single page
 4. **order.html** - Page to Order Selected Food
