@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="css/onboarding.css" />
+    <script src="scripts/main.js" defer></script>
+  </head>
+  <body>
+    <section class="signup">
+      <div class="container">
+        <h2 class="text-center">Create an Account</h2>
+
+          <div class="order-label">Full Name</div>
+          <input
+            type="text"
+            id="signup-name"
+            name="name"
+            placeholder="Enter your full name"
+            class="input-responsive"
+            required
+          />
+
+          <div class="order-label">Email</div>
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            placeholder="Enter your email"
+            class="input-responsive"
+            required
+          />
+
+          <div class="order-label">Password</div>
+          <input
+            type="password"
+            id="signup-password"
+            name="password"
+            placeholder="Enter your password"
+            class="input-responsive"
+            required
+          />
+
+          <div class="order-label">Confirm Password</div>
+          <input
+            type="password"
+            id="signup-confirm-password"
+            name="confirm-password"
+            placeholder="Confirm your password"
+            class="input-responsive"
+            required
+          />
+
+          <div id="signup-error" class="form-error" style="display: none"></div>
+
+          <input
+            type="button"
+            name="signup"
+            value="Signup"
+            class="btn btn-primary"
+            onclick="signup()"
+          />
+        <p class="switch-link text-center">
+          Already have an account? <a href="login.html">Login here</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

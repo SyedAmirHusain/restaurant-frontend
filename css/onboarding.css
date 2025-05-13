@@ -1,0 +1,91 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Shared container styling for both login and signup */
+.login,
+.signup {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Heading styling */
+.text-center {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Label styling */
+.login-form .order-label,
+.signup-form .order-label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Input fields */
+.input-responsive {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-responsive:focus {
+    border-color: #ff7e5f;
+    outline: none;
+}
+
+/* Primary button */
+.btn-primary {
+    width: 100%;
+    background: #ff7e5f;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #eb5e3f;
+}
+
+/* Optional: error message styling */
+.form-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.switch-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch-link a {
+    color: #ff7e5f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}

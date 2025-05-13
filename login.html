@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/onboarding.css" />
+    <script src="scripts/main.js"></script>
+  </head>
+  <body>
+    <section class="login">
+      <div class="container">
+        <h2 class="text-center">Login to Your Account</h2>
+
+        <div class="order-label">Email</div>
+        <input
+          type="email"
+          id="login-email"
+          name="email"
+          placeholder="Enter your email"
+          class="input-responsive"
+          required
+        />
+
+        <div class="order-label">Password</div>
+        <input
+          type="password"
+          id="login-password"
+          name="password"
+          placeholder="Enter your password"
+          class="input-responsive"
+          required
+        />
+
+        <input
+          type="button"
+          name="login"
+          value="Login"
+          class="btn btn-primary"
+          onclick="login()"
+        />
+
+        <p class="switch-link text-center">
+          Don't have an account? <a href="signup.html">Signup now</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <script>
+      // Check if the user is logged in by looking for a session cache
+      window.onload = function () {
+        // Try to get the session token or any identifier you stored after successful login
+        const accessToken = sessionStorage.getItem("accessToken");
+
+        if (accessToken) {
+          // If the accessToken exists, they are logged in
+          window.location.href = "home.html"; // Redirect to home page
+        } else {
+          // If no token, redirect to login page
+          window.location.href = "login.html";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
