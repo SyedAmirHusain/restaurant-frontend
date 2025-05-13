@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <!-- Important to make website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
+    <title>Confirm Order</title>
 
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js" defer></script>
 </head>
 
 <body>
-    <!-- Navbar Section Starts Here -->
+    <!-- Navbar Section -->
     <section class="navbar">
         <div class="container">
             <div class="logo">
@@ -24,99 +24,53 @@
 
             <div class="menu text-right">
                 <ul>
-                    <li>
-                        <a href="home.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Categories</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Foods</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="foods.html">Foods</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
 
             <div class="clearfix"></div>
         </div>
     </section>
-    <!-- Navbar Section Ends Here -->
 
-    <!-- fOOD sEARCH Section Starts Here -->
+    <!-- Order Confirmation Section -->
     <section class="food-search">
         <div class="container">
+            <h2 class="text-center text-white">Fill this form to confirm your order</h2>
 
-            <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+            <div id="cart-items-container">
+                <!-- Cart items will be populated here dynamically via JavaScript -->
+            </div>
 
-            <form action="#" class="order">
-                <fieldset>
-                    <legend>Selected Food</legend>
-
-                    <div class="food-menu-img">
-                        <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                    </div>
-
-                    <div class="food-menu-desc">
-                        <h3>Food Title</h3>
-                        <p class="food-price">₹2.3</p>
-
-                        <div class="order-label">Quantity</div>
-                        <input type="number" name="qty" class="input-responsive" value="1" required>
-
-                    </div>
-
-                </fieldset>
-            </form>
-
-            <legend>Delivery Details</legend>
-            <div class="order-label">Full Name</div>
-            <input type="text" name="full-name" placeholder="E.g. Syed Amir Husain" class="input-responsive"
-                id="full-name" required>
-
-            <div class="order-label">Phone Number</div>
-            <input type="tel" name="contact" placeholder="E.g. 9843xxxxxx" class="input-responsive" id="phone" required>
-
-            <div class="order-label">Email</div>
-            <input type="email" name="email" placeholder="E.g. syedamirhusain63@gmail.com" class="input-responsive"
-                id="email" required>
-
-            <div class="order-label">Address</div>
-            <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive"
+            <legend style="color: white">Delivery To</legend>
+            <div class="order-label" style="color:white">Address</div>
+            <textarea name="address" rows="6" placeholder="E.g. Street, City, ZIP" class="input-responsive"
                 id="address" required></textarea>
 
-            <input type="button" name="submit" value="Confirm Order" class="btn btn-primary" onclick="placeOrder()">
-
+            <input type="button" value="Confirm Order" class="btn btn-primary"
+                onclick="placeOrder()">
         </div>
     </section>
-    <!-- fOOD sEARCH Section Ends Here -->
 
-    <!-- social Section Starts Here -->
+    <!-- Social Section -->
     <section class="social">
         <div class="container text-center">
             <ul>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
-                </li>
+                <li><a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a></li>
+                <li><a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a></li>
+                <li><a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a></li>
             </ul>
         </div>
     </section>
-    <!-- social Section Ends Here -->
 
-    <!-- footer Section Starts Here -->
+    <!-- Footer Section -->
     <section class="footer">
         <div class="container text-center">
             <p>All rights reserved. Designed By <a href="#">Syed Amir Husain</a></p>
         </div>
     </section>
-    <!-- footer Section Ends Here -->
 
 </body>
 

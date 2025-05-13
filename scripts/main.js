@@ -12,26 +12,42 @@ function placeOrder() {
         return;
     }
 
+    const address = document.getElementById("address")?.value.trim();
+    if (!address) {
+        alert("Please enter a delivery address.");
+        return;
+    }
+
+    let cart = localStorage.getItem("cart");
+    try {
+        cart = JSON.parse(cart);
+    } catch (e) {
+        cart = null;
+    }
+
+    if (!cart || cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
     const body = {
-        name: document.getElementById("full-name").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        address: document.getElementById("address").value,
+        address: address,
+        items: cart
     };
 
-    console.log('Order data:', body);
+    console.log('Placing order with data:', body);
 
     fetch(`${baseUrl}/place-order`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}` 
+            'Authorization': `Bearer ${accessToken}`
         },
         body: JSON.stringify(body)
     })
     .then(res => {
         if (res.status === 401 || res.status === 403) {
-            alert('Session expired or unauthorized access. Redirecting to login...');
+            alert('Session expired or unauthorized. Redirecting to login...');
             sessionStorage.clear();
             window.location.href = 'index.html';
             return;
@@ -40,10 +56,11 @@ function placeOrder() {
     })
     .then(resBody => {
         if (resBody?.status) {
-            console.log(resBody.msg);
             alert('Order placed successfully!');
-        } else if (resBody) {
-            console.warn('Order failed:', resBody.msg);
+            localStorage.removeItem("cart");
+            window.location.href = "home.html";
+        } else {
+            console.warn('Order failed:', resBody?.msg || resBody);
             alert('Failed to place order.');
         }
     })
@@ -52,6 +69,7 @@ function placeOrder() {
         alert('An error occurred while placing the order.');
     });
 }
+
 
 // Signup Function
 function signup() {

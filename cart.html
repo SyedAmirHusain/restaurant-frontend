@@ -1,152 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Cart</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .cart-container {
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      background-color: #fff;
-      border-radius: 8px;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-
-    .cart-item button {
-      margin: 0 5px;
-    }
-
-    .total {
-      text-align: right;
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    .btn-primary {
-      background-color: #ff6b81;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .btn-primary:hover {
-      background-color: #ff4757;
-    }
-
-    .empty {
-      text-align: center;
-      font-size: 1.2em;
-      color: #777;
-      padding: 40px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="cart-container">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <div class="total" id="cart-total">Total: ₹0.00</div>
-    <div style="text-align: right; margin-top: 20px;">
-      <button class="btn-primary" onclick="placeOrder()">Place Order</button>
-    </div>
-  </div>
-
-  <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function renderCart() {
-      const cart = getCart();
-      const cartItemsDiv = document.getElementById('cart-items');
-      const cartTotalDiv = document.getElementById('cart-total');
-      cartItemsDiv.innerHTML = '';
-      let total = 0;
-
-      if (cart.length === 0) {
-        cartItemsDiv.innerHTML = '<div class="empty">Your cart is empty.</div>';
-        cartTotalDiv.innerText = 'Total: ₹0.00';
-        return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .cart-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        border-radius: 8px;
       }
 
-      cart.forEach((item, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
 
-        itemDiv.innerHTML = `
+      .cart-item button {
+        margin: 0 5px;
+      }
+
+      .total {
+        text-align: right;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+
+      .btn-primary {
+        background-color: #ff6b81;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .btn-primary:hover {
+        background-color: #ff4757;
+      }
+
+      .empty {
+        text-align: center;
+        font-size: 1.2em;
+        color: #777;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cart-container">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <div class="total" id="cart-total">Total: ₹0.00</div>
+      <div style="text-align: right; margin-top: 20px">
+        <button class="btn-primary" onclick="redirectToOrder()">Place Order</button>
+      </div>
+    </div>
+
+    <script>
+      function getCart() {
+        return JSON.parse(localStorage.getItem("cart")) || [];
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      function renderCart() {
+        const cart = getCart();
+        const cartItemsDiv = document.getElementById("cart-items");
+        const cartTotalDiv = document.getElementById("cart-total");
+        cartItemsDiv.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML =
+            '<div class="empty">Your cart is empty.</div>';
+          cartTotalDiv.innerText = "Total: ₹0.00";
+          return;
+        }
+
+        cart.forEach((item, index) => {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "cart-item";
+
+          itemDiv.innerHTML = `
           <div>
             <strong>${item.name}</strong><br />
-            ₹${item.price.toFixed(2)} x ${item.qty}
+            ₹${item.price.toFixed(2)}
           </div>
           <div>
             <button onclick="updateQty(${index}, -1)">-</button>
+            ${item.qty}
             <button onclick="updateQty(${index}, 1)">+</button>
             <button onclick="removeItem(${index})">🗑️</button>
           </div>
         `;
 
-        total += item.price * item.qty;
-        cartItemsDiv.appendChild(itemDiv);
-      });
+          total += item.price * item.qty;
+          cartItemsDiv.appendChild(itemDiv);
+        });
 
-      cartTotalDiv.innerText = `Total: ₹${total.toFixed(2)}`;
-    }
+        cartTotalDiv.innerText = `Total: ₹${total.toFixed(2)}`;
+      }
 
-    function updateQty(index, change) {
-      const cart = getCart();
-      cart[index].qty += change;
-      if (cart[index].qty <= 0) {
+      function updateQty(index, change) {
+        const cart = getCart();
+        cart[index].qty += change;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        saveCart(cart);
+        renderCart();
+      }
+
+      function removeItem(index) {
+        const cart = getCart();
         cart.splice(index, 1);
-      }
-      saveCart(cart);
-      renderCart();
-    }
-
-    function removeItem(index) {
-      const cart = getCart();
-      cart.splice(index, 1);
-      saveCart(cart);
-      renderCart();
-    }
-
-    function placeOrder() {
-      const cart = getCart();
-      if (cart.length === 0) {
-        alert('Cart is empty');
-        return;
+        saveCart(cart);
+        renderCart();
       }
 
-      // Replace with your own backend call
-      console.log('Placing order:', cart);
+      function redirectToOrder() {
+        window.location.href = "order.html";
+      }
 
-      // Example clear + message
-      localStorage.removeItem('cart');
-      alert('Order placed successfully!');
-      window.location.href = 'home.html';
-    }
-
-    // Run on page load
-    document.addEventListener('DOMContentLoaded', renderCart);
-  </script>
-
-</body>
+      // Run on page load
+      document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+  </body>
 </html>
